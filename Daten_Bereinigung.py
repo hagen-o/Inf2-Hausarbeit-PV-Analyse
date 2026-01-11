@@ -93,15 +93,6 @@ for file in FILES:
     max_power = MAX_POWER_BY_FILE[file]
     cleaned_data[file] = clean_pv_measurements(path, max_power)
 
-# bereinigte Daten speichern
-OUT_DIR = Path("Bereinigt")
-OUT_DIR.mkdir(exist_ok=True)
-
-for filename, df in cleaned_data.items():
-    out_path = OUT_DIR / f"cleaned_{filename}"
-    df.to_csv(out_path, index=False)
-    print(f"Gespeichert: {out_path}")
-
 # Zusammenführen
 df_all = pd.concat(
     cleaned_data.values(),
@@ -113,5 +104,5 @@ df_all = pd.concat(
 print(df_all.info())
 print(df_all.describe())
 
-#Daten speichern
+#bereinigte Daten speichern
 df_all.to_csv("pv_cleaned_all.csv", index=False)
