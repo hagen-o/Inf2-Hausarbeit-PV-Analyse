@@ -88,6 +88,7 @@ for f in FILES:
 # Alle Dateien bereinigen
 cleaned_data = {}
 
+# Bereinigung
 for file in FILES:
     path = DATA_DIR / file
     max_power = MAX_POWER_BY_FILE[file]
